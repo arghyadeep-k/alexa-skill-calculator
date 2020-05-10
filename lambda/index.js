@@ -1,15 +1,15 @@
-/////////////////////////////////
-// Modules Definition
-/////////////////////////////////
+////////////////////////
+// Modules Definition //
+////////////////////////
 
 // ASK SDK
 const Alexa = require('ask-sdk-core');
 const languageStrings = require('./languageStrings');
 
 
-/////////////////////////////////
-// Handlers Definition
-/////////////////////////////////
+/////////////////////////
+// Handlers Definition //
+/////////////////////////
 
 /**
  * Handles LaunchRequest requests sent by Alexa when a birthdate has been registered
@@ -123,10 +123,10 @@ const CaptureDivisionOperationIntentHandler = {
 
         if(y != 0) {
             const result = x / y;
-            const speechText = `The divison of ${x} by ${y} is ${result}.` ;
+            const speechText = `The division of ${x} by ${y} is ${result}.` ;
         }
         else
-            speechText = 'Dividing by 0 not allowed.'
+            speechText = 'Dividing by zero not allowed.'
 
         return handlerInput.responseBuilder
             .speak(speechText)      
@@ -164,7 +164,7 @@ const CancelAndStopIntentHandler = {
                 || Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
-        const speakOutput = `Goodbye!`;
+        const speakOutput = `Okay. Bye.`;
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -227,9 +227,9 @@ const ErrorHandler = {
     }
 };
 
-/////////////////////////////////
-// Interceptors Definition
-/////////////////////////////////
+/////////////////////////////
+// Interceptors Definition //
+/////////////////////////////
 
 /**
  * This request interceptor will log all incoming requests in the associated Logs (CloudWatch) of the AWS Lambda functions
@@ -251,9 +251,9 @@ const LoggingResponseInterceptor = {
     }
 };
 
-/////////////////////////////////
-// SkillBuilder Definition
-/////////////////////////////////
+/////////////////////////////
+// SkillBuilder Definition //
+/////////////////////////////
 
 /**
  * The SkillBuilder acts as the entry point for your skill, routing all request and response
@@ -275,4 +275,3 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestInterceptors(LoggingRequestInterceptor)    
     .addResponseInterceptors(LoggingResponseInterceptor)    
     .lambda();
-
